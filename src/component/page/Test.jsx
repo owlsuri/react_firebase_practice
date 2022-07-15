@@ -1,8 +1,6 @@
-import React from "react";
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import firebaseApp from "../../Firebase";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function Test(props) {
   const [data, setData] = useState([]);
@@ -32,7 +30,7 @@ function Test(props) {
     <div>
       <button onClick={onClickSubmit}>하이</button>
       {data?.map((el) => (
-        <div>
+        <div key={el.title}>
           <div>{el.title}</div>
           <div>{el.contents}</div>
           <div>{el.writer}</div>
