@@ -1,8 +1,9 @@
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import firebaseApp from "../../Firebase";
 import React, { useState, useEffect } from "react";
+import NextButton from "../commons/buttons/nextButton";
 
-function Test(props) {
+function FireBaseExample(props) {
   const [data, setData] = useState([]);
 
   const onClickSubmit = async () => {
@@ -13,7 +14,6 @@ function Test(props) {
       contents: "바이",
       password: "1234",
     });
-    console.log("끝");
   };
 
   useEffect(() => {
@@ -36,8 +36,11 @@ function Test(props) {
           <div>{el.writer}</div>
         </div>
       ))}
+      <div style={{ width: "500px" }}>
+        <NextButton contents="다음" />
+      </div>
     </div>
   );
 }
 
-export default Test;
+export default FireBaseExample;
