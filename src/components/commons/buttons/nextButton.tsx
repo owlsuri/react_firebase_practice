@@ -6,7 +6,7 @@ const NextBtn = styled.button`
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 25px 70px;
+  padding: 10px 10px;
   color: white;
   border: none;
   border-radius: 8px;
