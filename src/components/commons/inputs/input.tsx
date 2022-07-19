@@ -1,10 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+
+const InputStyled = styled.input`
+  width: 100%;
+`;
 
 interface IProps {
-  type: "text" | "number" | "email";
+  type: "text" | "number" | "email" | "password";
   placeholder: string;
 }
 
 export default function Input(props: IProps) {
-  return <input type={props.type} placeholder={props.placeholder} />;
+  return <InputStyled type={props.type} placeholder={props.placeholder} />;
 }
