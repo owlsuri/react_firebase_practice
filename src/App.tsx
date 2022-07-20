@@ -14,25 +14,21 @@ import { colorPick } from "./components/commons/color/colorPick";
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
     box-sizing: border-box;
     background-color: ${colorPick.lightPurple};
 		margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  
     font-size: 20px;
+    
   }
 `;
 
 function App() {
   return (
     <>
-      <GlobalStyle />
       <BrowserRouter>
+        <GlobalStyle />
         <Layout>
           <Routes>
             <Route index element={<MainPage />} />

@@ -5,6 +5,7 @@ const Error = styled.div`
   font-size: 12px;
   color: red;
   font-weight: 700;
+  padding: 10px 0px 0px 0px;
 `;
 
 interface IProps {
