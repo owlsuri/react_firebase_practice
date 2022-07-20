@@ -22,6 +22,11 @@ export const Wrapper = styled.div`
   padding: 80px 120px 35px 120px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 `;
+export const SelectImg = styled.img`
+  width: 120px;
+  height: 120px;
+  margin: 49px 47px;
+`;
 export const BtnSection = styled.div`
   display: flex;
   flex-direction: row;
@@ -94,8 +99,16 @@ export const WeatherGrid = styled.div`
   grid-template-columns: 25% 25% 25% 25%;
 `;
 
-export const WeatherImg = styled.img`
-  width: 120px;
-  height: 120px;
-  margin: 49px 47px;
+// Relation.tsx
+
+export const RelationWrapper = styled(WeatherWrapper)`
+  padding: 82px 56px;
+`;
+
+// Do.tsx
+
+export const DoGrid = styled.div`
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
 `;

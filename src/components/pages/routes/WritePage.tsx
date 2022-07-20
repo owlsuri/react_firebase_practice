@@ -3,6 +3,8 @@ import DatePick from "../write/Date";
 import styled from "styled-components";
 import WeatherPick from "../write/weather";
 import LocationPick from "../write/Location";
+import RelationPick from "../write/relation";
+import DoPick from "../write/Do";
 
 const Ref = styled.div`
   height: 100vh;
@@ -23,6 +25,12 @@ function WritePage() {
       </Ref>
       <Ref>
         <LocationPick />
+      </Ref>
+      <Ref>
+        <RelationPick />
+      </Ref>
+      <Ref>
+        <DoPick />
       </Ref>
     </div>
   );
