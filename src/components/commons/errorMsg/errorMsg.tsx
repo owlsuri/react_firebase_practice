@@ -4,12 +4,12 @@ import styled from "styled-components";
 const Error = styled.div`
   font-size: 12px;
   color: red;
-  font-weight: 700;
-  padding: 10px 0px 0px 0px;
+  font-weight: 600;
+  padding: 10px 0px 0px 20px;
 `;
 
 interface IProps {
-  contents: string;
+  contents: string | any;
 }
 
 export default function ErrorMsg(props: IProps) {
