@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import DatePick from "../write/Date";
 import styled from "styled-components";
 import WeatherPick from "../write/weather";
+import LocationPick from "../write/Location";
 
-const Test = styled.div`
+const Ref = styled.div`
   height: 100vh;
   margin-bottom: 50px;
 `;
@@ -14,12 +15,15 @@ function WritePage() {
 
   return (
     <div>
-      <Test>
+      <Ref>
         <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
-      </Test>
-      <Test>
+      </Ref>
+      <Ref>
         <WeatherPick />
-      </Test>
+      </Ref>
+      <Ref>
+        <LocationPick />
+      </Ref>
     </div>
   );
 }
