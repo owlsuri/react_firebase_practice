@@ -13,13 +13,15 @@ import Layout from "./components/pages/Layout";
 import { colorPick } from "./components/commons/color/colorPick";
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    
-    box-sizing: border-box;
-    background-color: ${colorPick.lightPurple};
-		margin: 0;
+  * {
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 20px;
+  }
   
-    font-size: 20px;
+  body {
+    background-color: ${colorPick.lightPurple};
+    
     
   }
 `;

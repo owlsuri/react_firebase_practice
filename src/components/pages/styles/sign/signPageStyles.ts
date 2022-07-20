@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-  width: 1150px;
   border-radius: 8px;
   background-color: white;
   padding: 80px 120px 35px 120px;
@@ -25,7 +24,6 @@ export const Form = styled.form`
 
 export const InputWrapper = styled.div`
   width: 910px;
-
   padding-bottom: 40px;
 `;
 

@@ -6,7 +6,8 @@ const SignBtn = styled.button`
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 10px 10px;
+  padding: 20px 0px;
+  font-size: 20px;
   color: white;
   border: none;
   border-radius: 8px;

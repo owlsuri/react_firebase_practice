@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "../styles/signUp/signUpstyles";
+import * as S from "../styles/sign/signPageStyles";
 import Input from "../../commons/inputs/input";
 import SignButton from "../../commons/buttons/signButton";
 import ErrorMsg from "../../commons/errorMsg/errorMsg";
