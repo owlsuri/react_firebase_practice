@@ -18,6 +18,6 @@ interface IProps {
   contents: string;
 }
 
-export default function NextButton(props: IProps) {
+export default function MoveButton(props: IProps) {
   return <NextBtn>{props.contents}</NextBtn>;
 }
