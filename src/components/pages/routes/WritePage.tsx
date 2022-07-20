@@ -1,7 +1,15 @@
-import React from "react";
-
+import React, { useState } from "react";
+import DatePick from "../write/Date";
+console.log(JSON.stringify(process.env.REACT_APP_FIREBASE_APIKEY));
 function WritePage() {
-  return <div>여기는 글쓰기페이지 입니다.</div>;
+  const today = new Date();
+  const [selectDay, setSelectDay] = useState(today);
+
+  return (
+    <div>
+      <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
+    </div>
+  );
 }
 
 export default WritePage;

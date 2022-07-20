@@ -11,18 +11,28 @@ import SignUpPage from "./components/pages/routes/SignUpPage";
 import ErrorPage from "./components/pages/routes/404";
 import Layout from "./components/pages/Layout";
 import { colorPick } from "./components/commons/color/colorPick";
+import WritePage from "./components/pages/routes/WritePage";
 
 export const GlobalStyle = createGlobalStyle`
-  * {
+
+* {
+    
+    
   box-sizing: border-box;
   margin: 0;
   font-size: 20px;
+  font-family: "gothicssi";
+  letter-spacing: 2px;
   }
   
   body {
     background-color: ${colorPick.lightPurple};
     
-    
+  
+  }
+  @font-face {
+    font-family: "gothicssi";
+    src: url("/font/HGGGothicssi_60g.ttf");
   }
 `;
 
@@ -35,6 +45,7 @@ function App() {
           <Routes>
             <Route index element={<MainPage />} />
             <Route path="/test" element={<FireBaseExample />} />
+            <Route path="/write" element={<WritePage />} />
             <Route path="/detail/:id" element={<DetailPage />} />
             <Route path="/list/:id" element={<ListPage />} />
             <Route path="/mypage/:id" element={<MyPage />} />

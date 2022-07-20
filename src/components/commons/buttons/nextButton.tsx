@@ -10,7 +10,7 @@ const NextBtn = styled.button`
   color: white;
   border: none;
   border-radius: 8px;
-  background-color: ${colorPick.purple};
+  background-color: ${colorPick.gray};
   cursor: pointer;
 `;
 
