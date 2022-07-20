@@ -16,13 +16,12 @@ import WritePage from "./components/pages/routes/WritePage";
 export const GlobalStyle = createGlobalStyle`
 
 * {
-    
-    
   box-sizing: border-box;
   margin: 0;
   font-size: 20px;
   font-family: "gothicssi";
   letter-spacing: 2px;
+  max-height: 100vh;
   }
   
   body {

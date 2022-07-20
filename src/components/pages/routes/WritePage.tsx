@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import DatePick from "../write/Date";
-console.log(JSON.stringify(process.env.REACT_APP_FIREBASE_APIKEY));
+import styled from "styled-components";
+import WeatherPick from "../write/weather";
+
+const Test = styled.div`
+  height: 100vh;
+  margin-bottom: 50px;
+`;
+
 function WritePage() {
   const today = new Date();
   const [selectDay, setSelectDay] = useState(today);
 
   return (
     <div>
-      <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
+      <Test>
+        <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
+      </Test>
+      <Test>
+        <WeatherPick />
+      </Test>
     </div>
   );
 }
