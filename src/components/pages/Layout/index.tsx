@@ -11,9 +11,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Body = styled.div`
-  /* min-height: 100vh; */
-`;
+const Body = styled.div``;
 
 export default function Layout(props: ILayoutProps) {
   return (
