@@ -1,5 +1,4 @@
 import React from "react";
-
 import { format } from "date-fns";
 import { ko } from "date-fns/esm/locale";
 import "react-day-picker/dist/style.css";
@@ -10,7 +9,7 @@ import MoveButton from "../../commons/buttons/nextButton";
 export default function DatePick(props: any) {
   return (
     <S.Main>
-      <S.Title>날짜를 선택해 주세요</S.Title>
+      <S.Title>날짜를 선택해 주세요.</S.Title>
       <S.Wrapper>
         <S.DayPickerCss
           locale={ko}

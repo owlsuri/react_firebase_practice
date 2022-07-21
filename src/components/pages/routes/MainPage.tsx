@@ -1,7 +1,31 @@
 import React from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  width: 1705px;
+  height: 1000px;
+  background: linear-gradient(130deg, #e5bdcf, #9496c5, #9496c5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Logo = styled.img`
+  width: 528px;
+`;
+const Sub = styled.img`
+  padding-top: 10px;
+  width: 449px;
+`;
 
 function MainPage() {
-  return <div>여기는 메인페이지 입니다.</div>;
+  return (
+    <Wrapper>
+      <Logo src="images/landingImg.png" />
+      <Sub src="images/landingSubImg.png" />
+    </Wrapper>
+  );
 }
 
 export default MainPage;
