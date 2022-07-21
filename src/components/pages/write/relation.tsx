@@ -1,19 +1,17 @@
 import React from "react";
 import * as S from "../styles/write/writeStyles";
-import { weatherImg } from "../../commons/data/weatherData";
 import MoveButton from "../../commons/buttons/nextButton";
+import { relationImg } from "../../commons/data/relationData";
 
-export default function WeatherPick() {
+export default function RelationPick() {
   return (
     <S.Main>
-      <S.Title>오늘 날씨는 어땠나요?</S.Title>
-      <S.WeatherWrapper>
-        <S.WeatherGrid>
-          {weatherImg.map((el) => (
-            <S.SelectImg key={el.key} src={el.img} />
-          ))}
-        </S.WeatherGrid>
-      </S.WeatherWrapper>
+      <S.Title>누구와 함께 했나요?</S.Title>
+      <S.RelationWrapper>
+        {relationImg.map((el) => (
+          <S.SelectImg key={el.key} src={el.img} />
+        ))}
+      </S.RelationWrapper>
 
       <S.BtnSection>
         <S.BeforeBtnWrapper>

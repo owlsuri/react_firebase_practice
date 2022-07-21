@@ -6,9 +6,11 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  margin-bottom: 50px;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   display: flex;
   justify-content: center;
   font-size: 50px;
@@ -22,6 +24,11 @@ export const Wrapper = styled.div`
   padding: 80px 120px 35px 120px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 `;
+export const SelectImg = styled.img`
+  width: 120px;
+  height: 120px;
+  margin: 49px 47px;
+`;
 export const BtnSection = styled.div`
   display: flex;
   flex-direction: row;
@@ -32,7 +39,7 @@ export const NextBtnWrapper = styled.div`
 `;
 export const BeforeBtnWrapper = styled.div`
   width: 164px;
-  padding-right: 30px;
+  margin-right: 30px;
   padding-top: 86px;
 `;
 
@@ -94,8 +101,62 @@ export const WeatherGrid = styled.div`
   grid-template-columns: 25% 25% 25% 25%;
 `;
 
-export const WeatherImg = styled.img`
-  width: 120px;
-  height: 120px;
-  margin: 49px 47px;
+// Relation.tsx
+
+export const RelationWrapper = styled(WeatherWrapper)`
+  padding: 82px 56px;
+`;
+
+// Do.tsx
+
+export const DoGrid = styled.div`
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
+`;
+
+// Photo.tsx
+
+export const PhotoWrapper = styled(Wrapper)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 200px 350px;
+`;
+
+export const PhotoImg = styled.img`
+  width: 128px;
+  height: 128px;
+`;
+
+export const PhotoInfo = styled.div`
+  padding-top: 30px;
+`;
+
+// DailyWrite.tsx
+export const TitleWrapper = styled.div`
+  width: 1200px;
+  padding: 20px 20px 0px 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 60px;
+`;
+export const DailyWrapper = styled(Wrapper)`
+  display: flex;
+  flex-direction: column;
+
+  width: 1200px;
+  height: 450px;
+  padding: 30px 20px 10px 20px;
+`;
+
+export const TextAreaWrapper = styled.div`
+  height: 90%;
+`;
+
+export const Test = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 10px 10px 0px;
 `;

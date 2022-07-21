@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import DatePick from "../write/Date";
-import styled from "styled-components";
 import WeatherPick from "../write/weather";
 import LocationPick from "../write/Location";
-
-const Ref = styled.div`
-  height: 100vh;
-  margin-bottom: 50px;
-`;
+import RelationPick from "../write/relation";
+import DoPick from "../write/Do";
+import PhotoPick from "../write/Photo";
+import DailyWrite from "../write/DailyWrite";
 
 function WritePage() {
   const today = new Date();
@@ -15,15 +13,13 @@ function WritePage() {
 
   return (
     <div>
-      <Ref>
-        <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
-      </Ref>
-      <Ref>
-        <WeatherPick />
-      </Ref>
-      <Ref>
-        <LocationPick />
-      </Ref>
+      <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
+      <WeatherPick />
+      <LocationPick />
+      <RelationPick />
+      <DoPick />
+      <PhotoPick />
+      <DailyWrite />
     </div>
   );
 }

@@ -7,7 +7,7 @@ export const Main = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   display: flex;
   justify-content: center;
   font-size: 50px;
