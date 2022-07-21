@@ -5,6 +5,7 @@ import LocationPick from "../write/Location";
 import RelationPick from "../write/relation";
 import DoPick from "../write/Do";
 import PhotoPick from "../write/Photo";
+import DailyWrite from "../write/DailyWrite";
 
 function WritePage() {
   const today = new Date();
@@ -18,6 +19,7 @@ function WritePage() {
       <RelationPick />
       <DoPick />
       <PhotoPick />
+      <DailyWrite />
     </div>
   );
 }
