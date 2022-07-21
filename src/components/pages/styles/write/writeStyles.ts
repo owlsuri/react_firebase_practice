@@ -6,6 +6,8 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  margin-bottom: 50px;
 `;
 
 export const Title = styled.div`
@@ -111,4 +113,23 @@ export const DoGrid = styled.div`
   display: grid;
   justify-content: space-between;
   grid-template-columns: 16% 16% 16% 16% 16% 16%;
+`;
+
+// Photo.tsx
+
+export const PhotoWrapper = styled(Wrapper)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 200px 350px;
+`;
+
+export const PhotoImg = styled.img`
+  width: 128px;
+  height: 128px;
+`;
+
+export const PhotoInfo = styled.div`
+  padding-top: 30px;
 `;
