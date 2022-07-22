@@ -16,6 +16,7 @@ import WritePage from "./components/pages/routes/WritePage";
 export const GlobalStyle = createGlobalStyle`
 
 * {
+  
   box-sizing: border-box;
   margin: 0;
   font-size: 20px;

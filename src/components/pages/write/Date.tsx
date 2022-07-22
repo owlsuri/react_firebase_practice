@@ -10,7 +10,7 @@ export default function DatePick(props: any) {
   return (
     <S.Main>
       <S.Title>날짜를 선택해 주세요.</S.Title>
-      <S.Wrapper>
+      <S.DayPickerWrapper>
         <S.DayPickerCss
           locale={ko}
           mode="single"
@@ -27,7 +27,7 @@ export default function DatePick(props: any) {
             )
           }
         />
-      </S.Wrapper>
+      </S.DayPickerWrapper>
       <S.NextBtnWrapper>
         <MoveButton contents="다음" />
       </S.NextBtnWrapper>

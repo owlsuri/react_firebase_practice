@@ -5,7 +5,9 @@ import { colorPick } from "../../../commons/color/colorPick";
 export const Main = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 100%;
   height: 100vh;
   margin-bottom: 50px;
 `;
@@ -24,6 +26,7 @@ export const Wrapper = styled.div`
   padding: 80px 120px 35px 120px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 `;
+
 export const SelectImg = styled.img`
   width: 120px;
   height: 120px;
@@ -44,6 +47,10 @@ export const BeforeBtnWrapper = styled.div`
 `;
 
 // Date.tsx
+
+export const DayPickerWrapper = styled(Wrapper)`
+  min-height: 607px;
+`;
 
 export const DayPickerCss = styled(DayPicker)`
   * {
@@ -145,7 +152,6 @@ export const TitleWrapper = styled.div`
 export const DailyWrapper = styled(Wrapper)`
   display: flex;
   flex-direction: column;
-
   width: 1200px;
   height: 450px;
   padding: 30px 20px 10px 20px;
