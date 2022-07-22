@@ -2,12 +2,13 @@ import React from "react";
 import * as S from "../styles/write/writeStyles";
 
 import MoveButton from "../../commons/buttons/nextButton";
+import MapCreate from "../../commons/map/mapCreate";
 
 export default function LocationPick() {
   return (
     <S.Main>
       <S.Title>어디에 있었나요?</S.Title>
-      <div>지도 넣어보세요</div>
+      <MapCreate />
       <S.BtnSection>
         <S.BeforeBtnWrapper>
           <MoveButton contents="이전" />
