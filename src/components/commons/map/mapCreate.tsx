@@ -39,8 +39,9 @@ export default function MapCreate() {
         marker.setMap(map);
 
         // // 장소 검색 객체를 생성합니다
-        // const ps = new window.kakao.maps.services.Places();
+        const ps = new window.kakao.maps.services.Places();
 
+        console.log(ps);
         // // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
         // const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
 
