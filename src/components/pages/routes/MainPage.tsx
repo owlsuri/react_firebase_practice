@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 1000px;
+  height: 100vh;
   background: linear-gradient(130deg, #e5bdcf, #9496c5, #9496c5);
   display: flex;
   flex-direction: column;
