@@ -4,4 +4,5 @@ export const colorPick = {
   pink: "#E5BDCF",
   blueGray: "#CBCBE0",
   gray: "#333333",
+  lightGray: "#A6A6A6",
 };

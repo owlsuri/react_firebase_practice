@@ -4,7 +4,7 @@ import { ko } from "date-fns/esm/locale";
 import "react-day-picker/dist/style.css";
 import * as S from "../styles/write/writeStyles";
 
-import MoveButton from "../../commons/buttons/nextButton";
+import MoveButton from "../../commons/buttons/routerButton";
 
 export default function DatePick(props: any) {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "../styles/write/writeStyles";
 import { weatherImg } from "../../commons/data/weatherData";
-import MoveButton from "../../commons/buttons/nextButton";
+import MoveButton from "../../commons/buttons/routerButton";
 
 export default function WeatherPick() {
   return (

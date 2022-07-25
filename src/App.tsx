@@ -10,7 +10,7 @@ import SignInPage from "./components/pages/routes/SignInPage";
 import SignUpPage from "./components/pages/routes/SignUpPage";
 import ErrorPage from "./components/pages/routes/404";
 import Layout from "./components/pages/Layout";
-import { colorPick } from "./components/commons/color/colorPick";
+// import { colorPick } from "./components/commons/color/colorPick";
 import WritePage from "./components/pages/routes/WritePage";
 
 export const GlobalStyle = createGlobalStyle`
@@ -22,12 +22,12 @@ export const GlobalStyle = createGlobalStyle`
   font-size: 20px;
   font-family: "gothicssi";
   letter-spacing: 2px;
-  max-height: 100vh;
+  
   }
   
   body {
-    background-color: ${colorPick.lightPurple};
     
+  min-height: 100vh;
   
   }
   @font-face {

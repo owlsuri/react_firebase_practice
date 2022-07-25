@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { colorPick } from "../color/colorPick";
 
-const NextBtn = styled.button`
+const RouterBtn = styled.button`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -19,5 +19,5 @@ interface IProps {
 }
 
 export default function MoveButton(props: IProps) {
-  return <NextBtn>{props.contents}</NextBtn>;
+  return <RouterBtn>{props.contents}</RouterBtn>;
 }
