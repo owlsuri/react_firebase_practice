@@ -15,8 +15,8 @@ const Header = styled.div`
 `;
 
 const Logo = styled.div`
-  width: 300px;
-  height: 100px;
+  width: 303px;
+  height: 80px;
 `;
 
 const HamburgerBtn = styled.div`
@@ -63,7 +63,6 @@ export default function HeaderPage() {
     setIsMenuOpen((prev) => !prev);
   };
 
-  console.log(isMenuOpen);
   return (
     <Header>
       <div></div>
