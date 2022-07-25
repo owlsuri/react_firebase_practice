@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "../styles/write/writeStyles";
-import MoveButton from "../../commons/buttons/nextButton";
+import MoveButton from "../../commons/buttons/routerButton";
 import { doImg } from "../../commons/data/DoData";
 
 export default function DoPick() {
