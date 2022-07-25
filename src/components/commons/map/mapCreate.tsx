@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "../../pages/styles/map/mapCreate";
 
 declare const window: typeof globalThis & {
@@ -21,7 +21,7 @@ export default function MapCreate() {
         const mapContainer = document.getElementById("map");
         const mapOption = {
           center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-          level: 3, // 지도의 레벨(확대, 축소 정도)
+          level: 1, // 지도의 레벨(확대, 축소 정도)
         };
         // 지도를 생성합니다.
         const map = new window.kakao.maps.Map(mapContainer, mapOption);
@@ -46,7 +46,11 @@ export default function MapCreate() {
         const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
 
         // 키워드로 장소를 검색합니다
-        searchPlaces();
+        const searchForm = document.getElementById("submit_btn");
+        searchForm?.addEventListener("click", function (e) {
+          e.preventDefault();
+          searchPlaces();
+        });
 
         // 키워드 검색을 요청하는 함수입니다
         function searchPlaces() {
@@ -250,7 +254,9 @@ export default function MapCreate() {
         // 인포윈도우에 장소명을 표시합니다
         function displayInfowindow(marker: any, title: any) {
           const content =
-            '<div style="padding:5px;z-index:1;">' + title + "</div>";
+            '<div style="font-size:13px;padding:5px;z-index:1;">' +
+            title +
+            "</div>";
 
           infowindow.setContent(content);
           infowindow.open(map, marker);
@@ -266,42 +272,69 @@ export default function MapCreate() {
     };
   }, []);
 
+  const [isOpen, setIsOpen] = useState(true);
+  const [word, setWord] = useState("");
+
+  const sideBarToggle = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const onChangeSearch = (event: any) => {
+    setWord(event.target.value);
+  };
+
   return (
     <S.Wrapper>
-      <S.Map>
+      <div className="map_wrap">
         <div
           id="map"
-          style={{ width: "877px", height: "570px", borderRadius: "10px" }}
+          style={{
+            width: "877px",
+            height: "570px",
+            position: "relative",
+            overflow: "hidden",
+          }}
         ></div>
-      </S.Map>
-      <S.SideBar>
-        <div className="map_wrap">
-          <div
-            id="map"
-            style={{
-              width: "100%",
-              height: "100%",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          ></div>
 
-          <div id="menu_wrap" className="bg_white">
-            <div className="option">
-              <div>
-                <form>
-                  키워드 :{" "}
-                  <input type="text" value="이태원 맛집" id="keyword" />
-                  <button type="submit">검색하기</button>
-                </form>
+        <div id="menu">
+          {isOpen && (
+            <div id="menu_wrap" className="bg_white">
+              <div className="option">
+                <div>
+                  <form>
+                    <input
+                      type="text"
+                      value={word}
+                      id="keyword"
+                      placeholder="주소나 키워드를 검색해주세요."
+                      onChange={onChangeSearch}
+                    />
+                    <button id="submit_btn" type="submit">
+                      <img src="/images/search.png" />
+                    </button>
+                  </form>
+                </div>
               </div>
+              <hr />
+              <ul id="placesList"></ul>
+              <div id="pagination"></div>
             </div>
-            <hr />
-            <ul id="placesList"></ul>
-            <div id="pagination"></div>
-          </div>
+          )}
+          {isOpen ? (
+            <div id="sideBtn">
+              <button id="sideBtnOpen" type="button" onClick={sideBarToggle}>
+                <S.LeftDisplayButton />
+              </button>
+            </div>
+          ) : (
+            <div id="sideBtn">
+              <button id="sideBtnClose" type="button" onClick={sideBarToggle}>
+                <S.RightDisplayButton />
+              </button>
+            </div>
+          )}
         </div>
-      </S.SideBar>
+      </div>
     </S.Wrapper>
   );
 }

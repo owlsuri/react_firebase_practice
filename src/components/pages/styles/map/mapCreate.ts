@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import { CaretLeftFilled, CaretRightFilled } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
-  .map_wrap,
+  .map_wrap {
+    display: flex;
+    flex-direction: row;
+  }
   .map_wrap * {
     margin: 0;
     padding: 0;
@@ -15,19 +19,18 @@ export const Wrapper = styled.div`
   }
   .map_wrap {
     position: relative;
-    width: 877px;
-    height: 570px;
   }
   #menu_wrap {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 0px;
     bottom: 0;
-    width: 250px;
+    width: 300px;
+    height: 550px;
     margin: 10px 0 30px 10px;
     padding: 5px;
     overflow-y: auto;
-    background: rgba(255, 255, 255, 0.7);
+    background: #cbcbe0;
     z-index: 1;
     font-size: 12px;
     border-radius: 10px;
@@ -45,12 +48,36 @@ export const Wrapper = styled.div`
   #menu_wrap .option {
     text-align: center;
   }
+  #menu_wrap .option input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 220px;
+    height: 40px;
+    border: #a6a6a6;
+  }
   #menu_wrap .option p {
     margin: 10px 0;
   }
-  #menu_wrap .option button {
-    margin-left: 5px;
+  #menu_wrap .option form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  #menu_wrap .option button {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  #menu_wrap .option button img {
+    width: 15px;
+  }
+
   #placesList li {
     list-style: none;
   }
@@ -75,7 +102,7 @@ export const Wrapper = styled.div`
     padding: 10px 0 10px 55px;
   }
   #placesList .info .gray {
-    color: #8a8a8a;
+    color: #6c6c6f;
   }
   #placesList .info .jibun {
     padding-left: 26px;
@@ -83,7 +110,7 @@ export const Wrapper = styled.div`
       no-repeat;
   }
   #placesList .info .tel {
-    color: #009900;
+    color: #2b2bc3;
   }
   #placesList .item .markerbg {
     float: left;
@@ -152,11 +179,42 @@ export const Wrapper = styled.div`
     cursor: default;
     color: #777;
   }
+  #sideBtn {
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #sideBtnOpen {
+    position: absolute;
+    left: 310px;
+    z-index: 2;
+    width: 20px;
+    padding: 0px;
+    height: 70px;
+    background-color: #cbcbe0;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    outline: none;
+  }
+  #sideBtnClose {
+    position: absolute;
+    left: 0px;
+    z-index: 2;
+    width: 20px;
+    padding: 0px;
+    height: 70px;
+    background-color: #cbcbe0;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    outline: none;
+  }
 `;
 
-export const Map = styled.div`
-  position: absolute;
+export const LeftDisplayButton = styled(CaretLeftFilled)`
+  color: #333;
+  cursor: pointer;
 `;
-export const SideBar = styled.div`
-  position: relative;
+export const RightDisplayButton = styled(CaretRightFilled)`
+  color: #333;
 `;
