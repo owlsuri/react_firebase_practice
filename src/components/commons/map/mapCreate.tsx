@@ -20,16 +20,13 @@ export default function MapCreate() {
 
         const mapContainer = document.getElementById("map");
         const mapOption = {
-          center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+          center: new window.kakao.maps.LatLng(37.541, 126.986),
           level: 1, // 지도의 레벨(확대, 축소 정도)
         };
         // 지도를 생성합니다.
         const map = new window.kakao.maps.Map(mapContainer, mapOption);
 
-        const markerPosition = new window.kakao.maps.LatLng(
-          33.450701,
-          126.570667
-        );
+        const markerPosition = new window.kakao.maps.LatLng(37.541, 126.986);
 
         // 마커를 생성합니다
         const marker = new window.kakao.maps.Marker({
@@ -43,7 +40,9 @@ export default function MapCreate() {
         const ps = new window.kakao.maps.services.Places();
 
         // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-        const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
+        const infowindow = new window.kakao.maps.InfoWindow({
+          zIndex: 1,
+        });
 
         // 키워드로 장소를 검색합니다
         const searchForm = document.getElementById("submit_btn");
@@ -106,6 +105,8 @@ export default function MapCreate() {
             const marker = addMarker(placePosition, i, "");
             const itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 
+            console.log("📌", placePosition.La);
+            console.log("✨", placePosition.Ma);
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
             // LatLngBounds 객체에 좌표를 추가합니다
             bounds.extend(placePosition);
@@ -254,7 +255,7 @@ export default function MapCreate() {
         // 인포윈도우에 장소명을 표시합니다
         function displayInfowindow(marker: any, title: any) {
           const content =
-            '<div style="font-size:13px;padding:5px;z-index:1;">' +
+            '<div style="font-size:15px;padding:5px;z-index:1;width:180px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background-color:#333;color:#fff;border-radius:5px;">' +
             title +
             "</div>";
 

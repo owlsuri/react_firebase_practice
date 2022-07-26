@@ -75,7 +75,8 @@ export const DayPickerCss = styled(DayPicker)`
   }
   .rdp-day_today:not(.rdp-day_outside) {
     font-weight: 800;
-    color: blue;
+    color: #9496c5;
+    text-shadow: 0px 0px 15px rgba(299, 189, 207, 1);
   }
   .rdp-day {
     width: calc(var(--rdp-cell-size) * 0.8);
