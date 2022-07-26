@@ -59,8 +59,6 @@ export const DailySelectedImg = styled.img`
   height: 58px;
 `;
 export const DailySelectedMiddleImg = styled(DailySelectedImg)`
-  width: 58px;
-  height: 58px;
   margin: 0px 30px;
 `;
 
