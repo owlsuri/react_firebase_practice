@@ -1,5 +1,5 @@
 import React from "react";
-import ListItem from "../../commons/item/ListItem";
+import ListItem from "../../commons/item/ListItem/ListItem";
 import HeaderPage from "../Layout/header/header";
 import NavPage from "../Layout/nav/nav";
 import * as S from "../styles/List/ListStyle";

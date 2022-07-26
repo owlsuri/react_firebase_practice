@@ -1,4 +1,4 @@
-import { colorPick } from "./../color/colorPick";
+import { colorPick } from "../../color/colorPick";
 import styled from "styled-components";
 
 export const Main = styled.div`
