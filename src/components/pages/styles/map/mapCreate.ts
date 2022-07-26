@@ -196,6 +196,7 @@ export const Wrapper = styled.div`
     border-radius: 0 5px 5px 0;
     border: none;
     outline: none;
+    cursor: pointer;
   }
   #sideBtnClose {
     position: absolute;
@@ -208,6 +209,7 @@ export const Wrapper = styled.div`
     border-radius: 0 5px 5px 0;
     border: none;
     outline: none;
+    cursor: pointer;
   }
 `;
 
