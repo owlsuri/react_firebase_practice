@@ -1,6 +1,10 @@
 import { colorPick } from "./../../color/colorPick";
 import styled from "styled-components";
 
+interface IProps {
+  isOpen: boolean;
+}
+
 export const Main = styled.div`
   border-radius: 10px;
   background-color: white;
@@ -55,6 +59,7 @@ export const SortImg = styled.img`
 `;
 
 export const BottomWrapper = styled(MainWrapper)`
+  display: ${(props: IProps) => (props.isOpen ? "flex" : "none")};
   padding-top: 56px;
 `;
 
