@@ -90,6 +90,7 @@ export default function MapCreate() {
           const bounds = new window.kakao.maps.LatLngBounds();
           // const listStr = "";
 
+          console.log("⛄", listEl);
           // 검색 결과 목록에 추가된 항목들을 제거합니다
           removeAllChildNods(listEl);
 
