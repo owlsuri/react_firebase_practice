@@ -4,7 +4,7 @@ import * as S from "../styles/write/writeStyles";
 import MoveButton from "../../commons/buttons/routerButton";
 import MapCreate from "../../commons/map/mapCreate";
 
-export default function LocationPick() {
+export default function LocationPick(props: any) {
   return (
     <S.Main>
       <S.Title>어디에 있었나요?</S.Title>

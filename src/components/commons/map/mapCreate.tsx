@@ -90,7 +90,6 @@ export default function MapCreate() {
           const bounds = new window.kakao.maps.LatLngBounds();
           // const listStr = "";
 
-          console.log("⛄", listEl);
           // 검색 결과 목록에 추가된 항목들을 제거합니다
           removeAllChildNods(listEl);
 
@@ -104,7 +103,13 @@ export default function MapCreate() {
               places[i].x
             );
             const marker = addMarker(placePosition, i, "");
-            const itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+            const itemEl: any = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+            console.log("👩🏻", itemEl.textContent.split("  "));
+            const itemElLocation = itemEl.textContent.split("  ");
+            const itemElLocationName = itemElLocation[1].replace(" ", "");
+            const itemElAddress = itemElLocation[3];
+            console.log("🛠", itemElLocationName);
+            console.log("🎠", itemElAddress);
 
             console.log("📌", placePosition.La);
             console.log("✨", placePosition.Ma);
@@ -155,6 +160,7 @@ export default function MapCreate() {
         // 검색결과 항목을 Element로 반환하는 함수입니다
         function getListItem(index: number, places: any) {
           const el = document.createElement("li");
+          console.log(places, "여기다");
           let itemStr =
             '<span class="markerbg marker_' +
             (index + 1) +
