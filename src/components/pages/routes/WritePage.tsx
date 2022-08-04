@@ -10,13 +10,25 @@ import EmotionPick from "../write/Emotion";
 
 function WritePage() {
   const today = new Date();
+  // 달력
   const [selectDay, setSelectDay] = useState(today);
+  // 지도
+  const [locationName, setLocationName] = useState("");
+  const [address, setAddress] = useState("");
+  const [locationLa, setLocationLa] = useState("");
+  const [locationMa, setLocationMa] = useState("");
 
+  console.log("🎯", locationName, address, locationLa, locationMa);
   return (
     <div>
       <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
       <WeatherPick />
-      <LocationPick />
+      <LocationPick
+        setLocationName={setLocationName}
+        setAddress={setAddress}
+        setLocationLa={setLocationLa}
+        setLocationMa={setLocationMa}
+      />
       <RelationPick />
       <DoPick />
       <EmotionPick />
