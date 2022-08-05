@@ -8,7 +8,12 @@ export default function LocationPick(props: any) {
   return (
     <S.Main>
       <S.Title>어디에 있었나요?</S.Title>
-      <MapCreate />
+      <MapCreate
+        setLocationName={props.setLocationName}
+        setAddress={props.setAddress}
+        setLocationLa={props.setLocationLa}
+        setLocationMa={props.setLocationMa}
+      />
       <S.BtnSection>
         <S.BeforeBtnWrapper>
           <MoveButton contents="이전" />

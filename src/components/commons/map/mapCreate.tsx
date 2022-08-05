@@ -5,7 +5,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function MapCreate() {
+export default function MapCreate(props: any) {
   useEffect(() => {
     const script = document.createElement("script"); // <script></script>
     script.src =
@@ -104,15 +104,7 @@ export default function MapCreate() {
             );
             const marker = addMarker(placePosition, i, "");
             const itemEl: any = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-            console.log("👩🏻", itemEl.textContent.split("  "));
-            const itemElLocation = itemEl.textContent.split("  ");
-            const itemElLocationName = itemElLocation[1].replace(" ", "");
-            const itemElAddress = itemElLocation[3];
-            console.log("🛠", itemElLocationName);
-            console.log("🎠", itemElAddress);
 
-            console.log("📌", placePosition.La);
-            console.log("✨", placePosition.Ma);
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
             // LatLngBounds 객체에 좌표를 추가합니다
             bounds.extend(placePosition);
@@ -160,7 +152,11 @@ export default function MapCreate() {
         // 검색결과 항목을 Element로 반환하는 함수입니다
         function getListItem(index: number, places: any) {
           const el = document.createElement("li");
-          console.log(places, "여기다");
+          props.setLocationName(places.place_name);
+          props.setAddress(places.address_name);
+          props.setLocationLa(places.x);
+          props.setLocationMa(places.x);
+          console.log("⛄", places.id);
           let itemStr =
             '<span class="markerbg marker_' +
             (index + 1) +
