@@ -48,7 +48,7 @@ function App() {
             <Route path="/write" element={<WritePage />} />
             <Route path="/detail/:id" element={<DetailPage />} />
             <Route path="/list/:id" element={<ListPage />} />
-            <Route path="/mypage/:id" element={<MyPage />} />
+            <Route path="/myPage/:id" element={<MyPage />} />
             <Route path="/signIn" element={<SignInPage />} />
             <Route path="/signUp" element={<SignUpPage />} />
             <Route path="*" element={<ErrorPage />} />

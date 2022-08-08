@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SignButton from "../../commons/buttons/signButton";
 import ErrorMsg from "../../commons/errorMsg/errorMsg";
 import Input from "../../commons/inputs/input";
@@ -12,6 +12,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useAppSelector } from "../../commons/hooks/useSelector";
 
 const schema = yup.object({
   loginEmail: yup
@@ -28,9 +29,11 @@ const schema = yup.object({
 });
 
 function SignInPage() {
+  const reducer = useAppSelector((state) => state);
+  console.log(reducer.userReducer);
   const auth = getAuth(firebaseApp);
 
-  const [, setUser] = useState({});
+  const [user, setUser] = useState({});
 
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
@@ -45,17 +48,16 @@ function SignInPage() {
 
   const onClickLogin = async (data: any) => {
     try {
-      const user = await signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
         data.loginEmail,
         data.loginPassword
       );
-      console.log(user);
     } catch (error: any) {
       console.log(error.message);
     }
   };
-
+  console.log(user, "1");
   return (
     <S.Main>
       <S.Title>SIGN IN</S.Title>

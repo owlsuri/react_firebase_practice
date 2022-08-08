@@ -32,6 +32,7 @@ export default function MyPageItem() {
           )}
         </S.MainRight>
       </S.MainWrapper>
+
       <S.BottomWrapper isOpen={filterIsOpen}>
         <S.SortLeftWrapper>
           <S.SortInfo>기분</S.SortInfo>

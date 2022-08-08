@@ -15,6 +15,9 @@ export const Main = styled.div`
 export const MainWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  div {
+  }
 `;
 
 export const MainLeft = styled.div`

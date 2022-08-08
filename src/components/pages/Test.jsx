@@ -1,6 +1,6 @@
-// import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import firebaseApp from "../../Firebase";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import NextButton from "../commons/buttons/nextButton";
 // import Input from "../commons/inputs/input";
 // import {
@@ -22,27 +22,27 @@ import {
 
 function FireBaseExample(props) {
   // 데이터 패칭 및 불러오기
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-  // const onClickSubmit = async () => {
-  //   const board = collection(getFirestore(firebaseApp), "board");
-  //   await addDoc(board, {
-  //     writer: "철수",
-  //     title: "하이",
-  //     contents: "바이",
-  //     password: "1234",
-  //   });
-  // };
+  const onClickSubmit = async () => {
+    const board = collection(getFirestore(firebaseApp), "board");
+    await addDoc(board, {
+      writer: "철수",
+      title: "하이",
+      contents: "바이",
+      password: "1234",
+    });
+  };
 
-  // useEffect(() => {
-  //   async function fetchBoard() {
-  //     const board = collection(getFirestore(firebaseApp), "board");
-  //     const result = await getDocs(board);
-  //     const boards = result.docs.map((el) => el.data());
-  //     setData(boards);
-  //   }
-  //   fetchBoard();
-  // }, []);
+  useEffect(() => {
+    async function fetchBoard() {
+      const board = collection(getFirestore(firebaseApp), "board");
+      const result = await getDocs(board);
+      const boards = result.docs.map((el) => el.data());
+      setData(boards);
+    }
+    fetchBoard();
+  }, []);
 
   //
 
@@ -123,10 +123,23 @@ function FireBaseExample(props) {
   const logout = async () => {
     await signOut(auth);
   };
+
+  // 유저 정보 가져오기
+
+  const userAuth = getAuth();
+
+  onAuthStateChanged(userAuth, (profile) => {
+    if (profile) {
+      console.log(profile, "profile");
+    }
+  });
+
+  console.log(userAuth, "userAuth");
+
   return (
     <div>
       {/* 데이터 패칭 */}
-      {/* <button onClick={onClickSubmit}>하이</button>
+      <button onClick={onClickSubmit}>하이</button>
       {data?.map((el) => (
         <div key={el.title}>
           <div>{el.title}</div>
@@ -134,7 +147,7 @@ function FireBaseExample(props) {
           <div>{el.writer}</div>
         </div>
       ))}
-      <div style={{ width: "200px" }}>
+      {/* <div style={{ width: "200px" }}>
         <NextButton contents="다음" />
       </div>
       <div>

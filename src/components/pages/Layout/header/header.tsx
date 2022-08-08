@@ -29,7 +29,7 @@ const Menu = styled.div`
   display: ${(props: IProps) => (props.isMenuOpen ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
-  top: 100px;
+  top: 12%;
   right: 14%;
   background-color: white;
   border-radius: 8px;
@@ -66,7 +66,7 @@ export default function HeaderPage() {
   return (
     <Header>
       <div></div>
-      <Link to={`/mypage/:id`}>
+      <Link to={`/myPage/:id`}>
         <Logo
           style={{
             backgroundImage: `url(/images/logo.png)`,
