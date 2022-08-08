@@ -123,6 +123,19 @@ function FireBaseExample(props) {
   const logout = async () => {
     await signOut(auth);
   };
+
+  // 유저 정보 가져오기
+
+  const userAuth = getAuth();
+
+  onAuthStateChanged(userAuth, (profile) => {
+    if (profile) {
+      console.log(profile, "profile");
+    }
+  });
+
+  console.log(userAuth, "userAuth");
+
   return (
     <div>
       {/* 데이터 패칭 */}

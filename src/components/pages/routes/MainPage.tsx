@@ -1,4 +1,5 @@
-import React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -20,6 +21,13 @@ const Sub = styled.img`
 `;
 
 function MainPage() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/signIn");
+    }, 2000);
+  }, []);
+
   return (
     <Wrapper>
       <Logo src="images/landingImg.png" />
