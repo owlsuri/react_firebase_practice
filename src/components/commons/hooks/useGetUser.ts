@@ -10,7 +10,13 @@ export default function useGetUser() {
   useEffect(() => {
     onAuthStateChanged(userAuth, (profile) => {
       if (profile) {
-        dispatch(addUser({ name: profile.displayName, id: profile.email }));
+        dispatch(
+          addUser({
+            name: profile.displayName,
+            id: profile.email,
+            uid: profile.uid,
+          })
+        );
       }
     });
   }, []);
