@@ -1,4 +1,12 @@
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import firebaseApp from "../../Firebase";
 import React, { useEffect, useState } from "react";
 // import NextButton from "../commons/buttons/nextButton";
@@ -24,26 +32,36 @@ function FireBaseExample(props) {
   // 데이터 패칭 및 불러오기
   const [data, setData] = useState([]);
 
+  const board = collection(getFirestore(firebaseApp), "board");
   const onClickSubmit = async () => {
-    const board = collection(getFirestore(firebaseApp), "board");
     await addDoc(board, {
-      writer: "철수",
-      title: "하이",
-      contents: "바이",
-      password: "1234",
+      name: "민영",
+      age: "30",
     });
   };
 
   useEffect(() => {
     async function fetchBoard() {
       const board = collection(getFirestore(firebaseApp), "board");
-      const result = await getDocs(board);
+      const q = query(board, where("name", "==", "민영"), orderBy("name"));
+      const result = await getDocs(q);
       const boards = result.docs.map((el) => el.data());
       setData(boards);
     }
     fetchBoard();
   }, []);
 
+  // const onClickFetch = async () => {
+  //   const ref = collection(getFirestore(firebaseApp), "board");
+  //   const bbb = await getDocs(ref);
+  //   console.log(bbb, "여긴가?");
+  //   const ccc = bbb.docs.map((el) => el.data);
+  //   console.log(ccc, "이건가?");
+  //   setData(ccc);
+
+  // };
+
+  console.log(data, "이거였나");
   //
 
   // 파일 업로드
@@ -140,11 +158,11 @@ function FireBaseExample(props) {
     <div>
       {/* 데이터 패칭 */}
       <button onClick={onClickSubmit}>하이</button>
-      {data?.map((el) => (
-        <div key={el.title}>
-          <div>{el.title}</div>
-          <div>{el.contents}</div>
-          <div>{el.writer}</div>
+      {/* <button onClick={onClickFetch}>데이터 불러오기</button> */}
+      {data?.map((el, idx) => (
+        <div key={idx}>
+          <div>{el.name}</div>
+          <div>{el.age}</div>
         </div>
       ))}
       {/* <div style={{ width: "200px" }}>
