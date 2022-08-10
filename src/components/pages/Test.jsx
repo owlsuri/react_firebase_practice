@@ -1,23 +1,27 @@
 import {
-  addDoc,
+  // addDoc,
   collection,
   getDocs,
   getFirestore,
-  orderBy,
+  // orderBy,
   query,
   where,
+  // doc,
+  // setDoc,
+  addDoc,
+  // orderBy,
 } from "firebase/firestore";
 import firebaseApp from "../../Firebase";
 import React, { useEffect, useState } from "react";
 // import NextButton from "../commons/buttons/nextButton";
 // import Input from "../commons/inputs/input";
-// import {
-//   getStorage,
-//   ref,
-//   uploadBytes,
-//   listAll,
-//   getDownloadURL,
-// } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  // uploadBytes,
+  listAll,
+  getDownloadURL,
+} from "firebase/storage";
 
 import {
   getAuth,
@@ -32,25 +36,35 @@ function FireBaseExample(props) {
   // 데이터 패칭 및 불러오기
   const [data, setData] = useState([]);
 
-  const board = collection(getFirestore(firebaseApp), "board");
+  // 수정
+  // const board = collection(getFirestore(firebaseApp), "board");
+  // const onClickSubmit = async () => {
+  //   await setDoc(doc(board, "문서ID"), {
+  //     name: "철수",
+  //     age: 19,
+  //   });
+  // };
+  const board = collection(getFirestore(firebaseApp), `board`);
   const onClickSubmit = async () => {
     await addDoc(board, {
-      name: "민영",
-      age: "30",
+      name: "철수",
+      age: 25,
     });
   };
 
   useEffect(() => {
     async function fetchBoard() {
       const board = collection(getFirestore(firebaseApp), "board");
-      const q = query(board, where("name", "==", "민영"), orderBy("name"));
+      const q = query(board, where("age", "<=", 23));
+      console.log(board, "qqq");
+      console.log(q, "gggg");
       const result = await getDocs(q);
       const boards = result.docs.map((el) => el.data());
       setData(boards);
     }
     fetchBoard();
   }, []);
-
+  console.log(data, "data");
   // const onClickFetch = async () => {
   //   const ref = collection(getFirestore(firebaseApp), "board");
   //   const bbb = await getDocs(ref);
@@ -66,10 +80,10 @@ function FireBaseExample(props) {
 
   // 파일 업로드
   // const [imageUpload, setImageUpload] = useState(null);
-  // const [imageList, setImageList] = useState([]);
+  const [imageList, setImageList] = useState([]);
 
-  // const storage = getStorage(firebaseApp);
-  // const imageListRef = ref(storage, "images/");
+  const storage = getStorage(firebaseApp);
+  const imageListRef = ref(storage, "images/");
 
   // const upload = () => {
   //   if (imageUpload === null) return;
@@ -84,16 +98,18 @@ function FireBaseExample(props) {
   //     //
   //   });
   // };
-  // // 이미지 불러오기
-  // useEffect(() => {
-  //   listAll(imageListRef).then((response) => {
-  //     response.items.forEach((item) => {
-  //       getDownloadURL(item).then((url) => {
-  //         setImageList((prev) => [...prev, url]);
-  //       });
-  //     });
-  //   });
-  // }, []);
+  // 이미지 불러오기
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageList((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
+
+  console.log(imageList, "list");
 
   // 회원가입 구현
   const [name, setName] = useState("");

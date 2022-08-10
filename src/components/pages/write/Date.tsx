@@ -15,12 +15,12 @@ export default function DatePick(props: any) {
           locale={ko}
           mode="single"
           required
-          selected={props.selectDay}
+          selected={props.select}
           onSelect={props.setSelect}
           footer={
             props.select ? (
               <S.DayPickerInput>
-                {format(props.select, "y-MM-dd")}
+                {format(props.select, "yyyy-MM-dd")}
               </S.DayPickerInput>
             ) : (
               <S.DayPickerInput>날짜를 선택해주세요</S.DayPickerInput>
