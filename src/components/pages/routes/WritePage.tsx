@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DatePick from "../write/Date";
 import WeatherPick from "../write/weather";
 import LocationPick from "../write/Location";
@@ -7,8 +7,19 @@ import DoPick from "../write/Do";
 import PhotoPick from "../write/Photo";
 import DailyWrite from "../write/DailyWrite";
 import EmotionPick from "../write/Emotion";
+import { useGetDate } from "../../commons/hooks/useGetDate";
+import { getAuth } from "firebase/auth";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import firebaseApp from "../../../Firebase";
 
 function WritePage() {
+  // 유저 정보 불러오기
+  const userAuth = getAuth();
+  // 데이터 자료 생성
+  const board = collection(
+    getFirestore(firebaseApp),
+    `${userAuth.currentUser?.uid}`
+  );
   const today = new Date();
   // 달력
   const [selectDay, setSelectDay] = useState(today);
@@ -36,7 +47,7 @@ function WritePage() {
       <DoPick />
       <EmotionPick />
       <PhotoPick />
-      <DailyWrite />
+      <DailyWrite onClickRegister={onClickRegister} />
     </div>
   );
 }

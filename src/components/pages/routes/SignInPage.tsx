@@ -12,7 +12,6 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useAppSelector } from "../../commons/hooks/useSelector";
 
 const schema = yup.object({
   loginEmail: yup
@@ -29,8 +28,6 @@ const schema = yup.object({
 });
 
 function SignInPage() {
-  const reducer = useAppSelector((state) => state);
-  console.log(reducer.userReducer);
   const auth = getAuth(firebaseApp);
 
   const [user, setUser] = useState({});
