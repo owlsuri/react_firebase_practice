@@ -13,22 +13,25 @@ function WritePage() {
   // 달력
   const [selectDay, setSelectDay] = useState(today);
   // 지도
-  const [locationName, setLocationName] = useState("");
-  const [address, setAddress] = useState("");
-  const [locationLa, setLocationLa] = useState("");
-  const [locationMa, setLocationMa] = useState("");
+  // const [locationName, setLocationName] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [locationLa, setLocationLa] = useState("");
+  // const [locationMa, setLocationMa] = useState("");
 
-  console.log("🎯", locationName, address, locationLa, locationMa);
+  const [place, setPlace] = useState({
+    placeName: "string",
+    address: "string",
+    placeX: "string",
+    placeY: "string",
+  });
+
+  console.log("🎯", place);
+
   return (
     <div>
       <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
       <WeatherPick />
-      <LocationPick
-        setLocationName={setLocationName}
-        setAddress={setAddress}
-        setLocationLa={setLocationLa}
-        setLocationMa={setLocationMa}
-      />
+      <LocationPick setPlace={setPlace} />
       <RelationPick />
       <DoPick />
       <EmotionPick />
