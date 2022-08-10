@@ -75,6 +75,14 @@ export default function MapCreate(props: any) {
 
             // 페이지 번호를 표출합니다
             displayPagination(pagination);
+
+            const bounds = new window.kakao.maps.LatLngBounds();
+            for (let i = 0; i < data.length; i++) {
+              displayMarker(data[i]);
+              bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
+            }
+
+            map.setBounds(bounds);
           } else if (status === window.kakao.maps.services.Status.ZERO_RESULT) {
             alert("검색 결과가 존재하지 않습니다.");
           } else if (status === window.kakao.maps.services.Status.ERROR) {
@@ -82,12 +90,41 @@ export default function MapCreate(props: any) {
           }
         }
 
+        // 검색 결과 목록과 마커를 표시하는 함수
+        function displayMarker(place: any) {
+          const marker = new window.kakao.maps.Marker({
+            map,
+            position: new window.kakao.maps.LatLng(place.y, place.x),
+          });
+          window.kakao.maps.event.addListener(
+            marker,
+            "click",
+            function (mouseEvent: any) {
+              props.setPlace({
+                placeName: place.place_name,
+                address: place.road_address_name,
+                placeX: place.x,
+                placeY: place.y,
+              });
+
+              infowindow.setContent(`
+              <div style="font-size:15px;padding:5px;z-index:1;width:180px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background-color:#333;color:#fff;border-radius:5px;">
+              ${place.place_name}
+              </div>
+              `);
+              infowindow.open(map, marker);
+              const moveLatLon = new window.kakao.maps.LatLng(place.y, place.x);
+              map.panTo(moveLatLon);
+            }
+          );
+        }
+
         // 검색 결과 목록과 마커를 표출하는 함수입니다
         function displayPlaces(places: any) {
           const listEl = document.getElementById("placesList");
           const menuEl = document.getElementById("menu_wrap");
           const fragment = document.createDocumentFragment();
-          const bounds = new window.kakao.maps.LatLngBounds();
+          // const bounds = new window.kakao.maps.LatLngBounds();
           // const listStr = "";
 
           // 검색 결과 목록에 추가된 항목들을 제거합니다
@@ -107,7 +144,7 @@ export default function MapCreate(props: any) {
 
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
             // LatLngBounds 객체에 좌표를 추가합니다
-            bounds.extend(placePosition);
+            // bounds.extend(placePosition);
 
             // 마커와 검색결과 항목에 mouseover 했을때
             // 해당 장소에 인포윈도우에 장소명을 표시합니다
@@ -129,13 +166,27 @@ export default function MapCreate(props: any) {
                 }
               );
 
-              itemEl.onmouseover = function () {
+              itemEl.addEventListener("click", function (e: any) {
                 displayInfowindow(marker, title);
-              };
 
-              itemEl.onmouseout = function () {
-                infowindow.close();
-              };
+                props.setPlace({
+                  placeName: places[i].place_name,
+                  address: places[i].road_address_name,
+                  placeX: places[i].x,
+                  placeY: places[i].y,
+                });
+
+                // props.setAddress(places[i]);
+                map.panTo(placePosition);
+              });
+
+              // itemEl.onmouseover = function () {
+              //   displayInfowindow(marker, title);
+              // };
+
+              // itemEl.onmouseout = function () {
+              //   infowindow.close();
+              // };
             })(marker, places[i].place_name);
 
             fragment.appendChild(itemEl);
@@ -146,17 +197,13 @@ export default function MapCreate(props: any) {
           if (menuEl !== null) menuEl.scrollTop = 0;
 
           // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-          map.setBounds(bounds);
+          // map.setBounds(bounds);
         }
 
         // 검색결과 항목을 Element로 반환하는 함수입니다
         function getListItem(index: number, places: any) {
           const el = document.createElement("li");
-          props.setLocationName(places.place_name);
-          props.setAddress(places.address_name);
-          props.setLocationLa(places.x);
-          props.setLocationMa(places.x);
-          console.log("⛄", places.id);
+
           let itemStr =
             '<span class="markerbg marker_' +
             (index + 1) +

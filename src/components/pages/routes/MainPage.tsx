@@ -25,7 +25,7 @@ function MainPage() {
   useEffect(() => {
     setTimeout(() => {
       navigate("/signIn");
-    }, 2000);
+    }, 2500);
   }, []);
 
   return (
