@@ -24,54 +24,25 @@ function WritePage() {
   // 달력
   const [selectDay, setSelectDay] = useState(today);
   // 지도
-  const [locationName, setLocationName] = useState("");
-  const [address, setAddress] = useState("");
-  const [locationLa, setLocationLa] = useState("");
-  const [locationMa, setLocationMa] = useState("");
+  // const [locationName, setLocationName] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [locationLa, setLocationLa] = useState("");
+  // const [locationMa, setLocationMa] = useState("");
 
-  const datePick = useGetDate(selectDay);
+  const [place, setPlace] = useState({
+    placeName: "string",
+    address: "string",
+    placeX: "string",
+    placeY: "string",
+  });
 
-  console.log(
-    "🎯",
-    locationName,
-    address,
-    locationLa,
-    locationMa,
-    selectDay,
-    today
-  );
-  // 글작성
-
-  const onClickRegister = async () => {
-    await addDoc(board, {
-      timestamp: datePick,
-      weather: "좋음",
-      location: {
-        x: 120,
-        y: 130,
-        addressTitle: "지도",
-      },
-      who: "혼자",
-      mood: "별로",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/reacttoyproject-c5488.appspot.com/o/images%2Fcry.png?alt=media&token=d9bf61bc-6d35-4dfc-a2a7-e2390d38e7a9",
-      day: {
-        title: "제목",
-        contents: "내용",
-      },
-    });
-  };
+  console.log("🎯", place);
 
   return (
     <div>
       <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
       <WeatherPick />
-      <LocationPick
-        setLocationName={setLocationName}
-        setAddress={setAddress}
-        setLocationLa={setLocationLa}
-        setLocationMa={setLocationMa}
-      />
+      <LocationPick setPlace={setPlace} />
       <RelationPick />
       <DoPick />
       <EmotionPick />
