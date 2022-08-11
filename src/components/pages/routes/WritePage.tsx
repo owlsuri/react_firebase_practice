@@ -38,6 +38,28 @@ function WritePage() {
 
   console.log("🎯", place);
 
+  const datePick = useGetDate(selectDay);
+
+  const onClickRegister = async () => {
+    await addDoc(board, {
+      timestamp: datePick,
+      weather: "좋음",
+      location: {
+        x: 120,
+        y: 130,
+        addressTitle: "지도",
+      },
+      who: "혼자",
+      mood: "별로",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/reacttoyproject-c5488.appspot.com/o/images%2Fcry.png?alt=media&token=d9bf61bc-6d35-4dfc-a2a7-e2390d38e7a9",
+      day: {
+        title: "제목",
+        contents: "내용",
+      },
+    });
+  };
+
   return (
     <div>
       <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
