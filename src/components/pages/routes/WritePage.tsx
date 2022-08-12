@@ -24,11 +24,6 @@ function WritePage() {
   // 달력
   const [selectDay, setSelectDay] = useState(today);
   // 지도
-  // const [locationName, setLocationName] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [locationLa, setLocationLa] = useState("");
-  // const [locationMa, setLocationMa] = useState("");
-
   const [place, setPlace] = useState({
     placeName: "string",
     address: "string",

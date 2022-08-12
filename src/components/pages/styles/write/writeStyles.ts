@@ -31,6 +31,10 @@ export const SelectImg = styled.img`
   width: 120px;
   height: 120px;
   margin: 49px 47px;
+  cursor: pointer;
+  :hover {
+    filter: drop-shadow(5px 5px 5px #f4d7e4);
+  }
 `;
 export const BtnSection = styled.div`
   display: flex;

@@ -16,20 +16,17 @@ import WritePage from "./components/pages/routes/WritePage";
 export const GlobalStyle = createGlobalStyle`
 
 * {
-  
   box-sizing: border-box;
   margin: 0;
   font-size: 20px;
   font-family: "gothicssi";
-  letter-spacing: 2px;
-  
+  letter-spacing: 2px;  
   }
   
   body {
-    
   min-height: 100vh;
-  
   }
+
   @font-face {
     font-family: "gothicssi";
     src: url("/font/HGGGothicssi_60g.ttf");
