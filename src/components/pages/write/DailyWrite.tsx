@@ -9,11 +9,17 @@ export default function DailyWrite(props: any) {
     <S.Main style={{ margin: "0px" }}>
       <S.Title>오늘 남기고 싶은 이야기를 적어주세요.</S.Title>
       <S.TitleWrapper>
-        <WriteTextArea placeholder="제목을 작성해주세요." />
+        <WriteTextArea
+          placeholder="제목을 작성해주세요."
+          register={props.register("title")}
+        />
       </S.TitleWrapper>
       <S.DailyWrapper>
         <S.TextAreaWrapper>
-          <WriteTextArea placeholder="내용을 작성해주세요." />
+          <WriteTextArea
+            placeholder="내용을 작성해주세요."
+            register={props.register("contents")}
+          />
         </S.TextAreaWrapper>
         <S.Test>0/100</S.Test>
       </S.DailyWrapper>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import DatePick from "../write/Date";
 import WeatherPick from "../write/weather";
 import LocationPick from "../write/Location";
@@ -11,6 +11,12 @@ import { useGetDate } from "../../commons/hooks/useGetDate";
 import { getAuth } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import firebaseApp from "../../../Firebase";
+import { useForm } from "react-hook-form";
+
+interface IRegData {
+  title: string;
+  contents: string;
+}
 
 function WritePage() {
   // 유저 정보 불러오기
@@ -24,6 +30,9 @@ function WritePage() {
   const today = new Date();
   // 달력
   const [selectDay, setSelectDay] = useState(today);
+  const datePick = useGetDate(selectDay);
+  // 날씨
+  const [weather, setWeather] = useState("");
   // 지도
   const [place, setPlace] = useState({
     placeName: "string",
@@ -31,43 +40,86 @@ function WritePage() {
     placeX: "string",
     placeY: "string",
   });
+  // 누구
+  const [who, setWho] = useState("");
+  // 무엇을
+  const [what, setWhat] = useState("");
+  // 분위기
+  const [mood, setMood] = useState("");
+  // 사진
+  const [image, setImage] = useState("");
+  // 일기
+  const { register, handleSubmit } = useForm<IRegData>({
+    mode: "onChange",
+  });
+  // 날씨 선택
+  const selectWeather = useCallback(
+    () => (event: any) => {
+      setWeather(event.target.id);
+    },
+    [weather]
+  );
+  // 누구 선택
+  const selectWho = useCallback(
+    () => (event: any) => {
+      setWho(event.target.id);
+    },
+    [weather]
+  );
+  // 무엇을 선택
+  const selectWhat = useCallback(
+    () => (event: any) => {
+      setWhat(event.target.id);
+    },
+    [weather]
+  );
+  // 분위기 선택
+  const selectMood = useCallback(
+    () => (event: any) => {
+      setMood(event.target.id);
+    },
+    [weather]
+  );
+  // 사진 선택
+  const selectImage = useCallback(
+    () => (event: any) => {
+      setImage(event.target.id);
+    },
+    [weather]
+  );
 
-  const selectWeather = (event: any) => {
-    console.log(event);
-  };
-
-  const onClickRegister = async () => {
+  const onClickRegister = async (data: IRegData) => {
     await addDoc(board, {
       timestamp: datePick,
-      weather: "좋음",
+      weather,
       location: {
         x: place.placeX,
         y: place.placeY,
         placeName: place.placeName,
         address: place.address,
       },
-      who: "혼자",
-      mood: "별로",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/reacttoyproject-c5488.appspot.com/o/images%2Fcry.png?alt=media&token=d9bf61bc-6d35-4dfc-a2a7-e2390d38e7a9",
+      who,
+      what,
+      mood,
+      image,
       day: {
-        title: "제목",
-        contents: "내용",
+        title: data.title,
+        contents: data.contents,
       },
     });
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit(onClickRegister)}>
       <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
-      <WeatherPick selectWeather={selectWeather} />
+      <WeatherPick selectFunc={selectWeather} />
       <LocationPick setPlace={setPlace} />
-      <RelationPick />
-      <DoPick />
-      <EmotionPick />
-      <PhotoPick />
-      <DailyWrite onClickRegister={onClickRegister} />
-    </div>
+      <RelationPick selectFunc={selectWho} />
+      <DoPick selectFunc={selectWhat} />
+      <EmotionPick selectFunc={selectMood} />
+      <PhotoPick selectImage={selectImage} />
+      <DailyWrite onClickRegister={onClickRegister} register={register} />
+    </form>
   );
 }
 

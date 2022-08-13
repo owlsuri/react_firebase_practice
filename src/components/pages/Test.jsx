@@ -18,7 +18,7 @@ import React, { useEffect, useState } from "react";
 import {
   getStorage,
   ref,
-  // uploadBytes,
+  uploadBytes,
   listAll,
   getDownloadURL,
 } from "firebase/storage";
@@ -56,15 +56,14 @@ function FireBaseExample(props) {
     async function fetchBoard() {
       const board = collection(getFirestore(firebaseApp), "board");
       const q = query(board, where("age", "<=", 23));
-      console.log(board, "qqq");
-      console.log(q, "gggg");
+
       const result = await getDocs(q);
       const boards = result.docs.map((el) => el.data());
       setData(boards);
     }
     fetchBoard();
   }, []);
-  console.log(data, "data");
+
   // const onClickFetch = async () => {
   //   const ref = collection(getFirestore(firebaseApp), "board");
   //   const bbb = await getDocs(ref);
@@ -75,41 +74,43 @@ function FireBaseExample(props) {
 
   // };
 
-  console.log(data, "이거였나");
   //
 
   // 파일 업로드
-  // const [imageUpload, setImageUpload] = useState(null);
-  const [imageList, setImageList] = useState([]);
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageList, setImageList] = useState("");
 
   const storage = getStorage(firebaseApp);
   const imageListRef = ref(storage, "images/");
 
-  // const upload = () => {
-  //   if (imageUpload === null) return;
+  const upload = () => {
+    if (imageUpload === null) return;
 
-  //   const imageRef = ref(storage, `images/${imageUpload.name}`);
-  //   // `images === 참조값이름(폴더이름), / 뒤에는 파일이름 어떻게 지을지
-  //   uploadBytes(imageRef, imageUpload).then((snapshot) => {
-  //     // 업로드 되자마자 뜨게 만들기
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       setImageList((prev) => [...prev, url]);
-  //     });
-  //     //
-  //   });
-  // };
+    const imageRef = ref(storage, `images/${imageUpload.name}`);
+    // `images === 참조값이름(폴더이름), / 뒤에는 파일이름 어떻게 지을지
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      // 업로드 되자마자 뜨게 만들기
+      getDownloadURL(snapshot.ref).then((url) => {
+        console.log(url, "💣");
+        setImageList(url);
+      });
+      //
+    });
+  };
   // 이미지 불러오기
   useEffect(() => {
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setImageList((prev) => [...prev, url]);
+          console.log(url, "💻");
+          setImageList(url);
         });
       });
     });
   }, []);
 
   console.log(imageList, "list");
+  console.log(imageUpload, "imageUpload");
 
   // 회원가입 구현
   const [name, setName] = useState("");
@@ -120,12 +121,10 @@ function FireBaseExample(props) {
 
   const register = async () => {
     try {
-      const user = await createUserWithEmailAndPassword(auth, email, password);
-      const profile = await updateProfile(auth.currentUser, {
+      await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, {
         displayName: name,
       });
-      console.log(user);
-      console.log(profile);
     } catch (error) {
       console.log(error.message);
     }
@@ -142,12 +141,7 @@ function FireBaseExample(props) {
 
   const login = async () => {
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
     } catch (error) {
       console.log(error.message);
     }
@@ -160,15 +154,13 @@ function FireBaseExample(props) {
 
   // 유저 정보 가져오기
 
-  const userAuth = getAuth();
+  // const userAuth = getAuth();
 
-  onAuthStateChanged(userAuth, (profile) => {
-    if (profile) {
-      console.log(profile, "profile");
-    }
-  });
-
-  console.log(userAuth, "userAuth");
+  // onAuthStateChanged(userAuth, (profile) => {
+  //   if (profile) {
+  //     console.log(profile, "profile");
+  //   }
+  // });
 
   return (
     <div>
@@ -189,16 +181,19 @@ function FireBaseExample(props) {
       </div> */}
 
       {/* 이미지업로드 */}
-      {/* <input
+      <input
         type="file"
         onChange={(event) => {
           setImageUpload(event.target.files[0]);
         }}
       />
       <button onClick={upload}>업로드</button>
-      {imageList.map((el) => {
+      {/* {imageList.map((el) => {
         return <img key={el} src={el} />;
       })} */}
+      <div>
+        <img src={imageList} />
+      </div>
 
       {/* 회원가입 */}
       <div>
