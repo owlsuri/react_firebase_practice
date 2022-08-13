@@ -3,14 +3,18 @@ import * as S from "../styles/write/writeStyles";
 import { weatherImg } from "../../commons/data/weatherData";
 import MoveButton from "../../commons/buttons/routerButton";
 
-export default function WeatherPick() {
+export default function WeatherPick(props: any) {
   return (
     <S.Main>
       <S.Title>오늘 날씨는 어땠나요?</S.Title>
       <S.WeatherWrapper>
         <S.WeatherGrid>
           {weatherImg.map((el) => (
-            <S.SelectImg key={el.key} src={el.img} />
+            <S.SelectImg
+              key={el.key}
+              src={el.img}
+              onClick={props.selectWeather}
+            />
           ))}
         </S.WeatherGrid>
       </S.WeatherWrapper>
