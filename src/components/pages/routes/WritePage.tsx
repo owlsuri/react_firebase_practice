@@ -15,6 +15,7 @@ import firebaseApp from "../../../Firebase";
 function WritePage() {
   // 유저 정보 불러오기
   const userAuth = getAuth();
+
   // 데이터 자료 생성
   const board = collection(
     getFirestore(firebaseApp),
@@ -23,12 +24,11 @@ function WritePage() {
   const today = new Date();
   // 달력
   const [selectDay, setSelectDay] = useState(today);
-  // 지도
-  // const [locationName, setLocationName] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [locationLa, setLocationLa] = useState("");
-  // const [locationMa, setLocationMa] = useState("");
+  const datePick = useGetDate(selectDay);
+  // 날씨
+  // const [weather, setWeather] = useState("");
 
+  // 지도
   const [place, setPlace] = useState({
     placeName: "string",
     address: "string",
@@ -36,18 +36,19 @@ function WritePage() {
     placeY: "string",
   });
 
-  console.log("🎯", place);
-
-  const datePick = useGetDate(selectDay);
+  const selectWeather = (event: any) => {
+    console.log(event);
+  };
 
   const onClickRegister = async () => {
     await addDoc(board, {
       timestamp: datePick,
       weather: "좋음",
       location: {
-        x: 120,
-        y: 130,
-        addressTitle: "지도",
+        x: place.placeX,
+        y: place.placeY,
+        placeName: place.placeName,
+        address: place.address,
       },
       who: "혼자",
       mood: "별로",
@@ -63,7 +64,7 @@ function WritePage() {
   return (
     <div>
       <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
-      <WeatherPick />
+      <WeatherPick selectWeather={selectWeather} />
       <LocationPick setPlace={setPlace} />
       <RelationPick />
       <DoPick />
