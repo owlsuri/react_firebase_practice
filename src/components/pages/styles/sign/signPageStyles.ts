@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
+  width: 70%;
   border-radius: 8px;
-  background-color: white;
-  padding: 80px 120px 35px 120px;
+  background-color: #fff;
+  padding: 80px 120px 80px 120px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
 `;
 
 export const Title = styled.h1`
@@ -43,6 +45,7 @@ export const SignInLink = styled.div`
   color: #333333;
   text-decoration: underline;
   font-weight: 700;
+  cursor: pointer;
 `;
 
 export const SignUpBtnWrapper = styled.div`

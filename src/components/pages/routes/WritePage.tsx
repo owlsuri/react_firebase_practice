@@ -24,10 +24,6 @@ function WritePage() {
   const today = new Date();
   // 달력
   const [selectDay, setSelectDay] = useState(today);
-  const datePick = useGetDate(selectDay);
-  // 날씨
-  // const [weather, setWeather] = useState("");
-
   // 지도
   const [place, setPlace] = useState({
     placeName: "string",
