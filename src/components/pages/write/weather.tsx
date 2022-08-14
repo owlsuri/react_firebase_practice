@@ -4,7 +4,7 @@ import { weatherImg } from "../../commons/data/weatherData";
 import MoveButton from "../../commons/buttons/routerButton";
 
 export interface IProps {
-  selectFunc: () => void;
+  selectFunc: (event: any) => void;
 }
 
 export default function WeatherPick(props: IProps) {

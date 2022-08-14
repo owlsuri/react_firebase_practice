@@ -22,10 +22,5 @@ interface IProps {
 }
 
 export default function WriteTextArea(props: IProps) {
-  return (
-    <InputStyled
-      {...props.register}
-      placeholder={props.placeholder}
-    ></InputStyled>
-  );
+  return <InputStyled {...props.register} placeholder={props.placeholder} />;
 }

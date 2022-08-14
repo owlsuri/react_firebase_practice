@@ -46,46 +46,49 @@ function WritePage() {
   const [what, setWhat] = useState("");
   // 분위기
   const [mood, setMood] = useState("");
+  console.log(mood);
   // 사진
   const [image, setImage] = useState("");
+  console.log(image);
   // 일기
   const { register, handleSubmit } = useForm<IRegData>({
     mode: "onChange",
   });
   // 날씨 선택
   const selectWeather = useCallback(
-    () => (event: any) => {
+    (event: any) => {
       setWeather(event.target.id);
     },
     [weather]
   );
   // 누구 선택
   const selectWho = useCallback(
-    () => (event: any) => {
+    (event: any) => {
       setWho(event.target.id);
     },
-    [weather]
+    [who]
   );
   // 무엇을 선택
   const selectWhat = useCallback(
-    () => (event: any) => {
+    (event: any) => {
       setWhat(event.target.id);
     },
-    [weather]
+    [what]
   );
+
   // 분위기 선택
   const selectMood = useCallback(
-    () => (event: any) => {
+    (event: any) => {
       setMood(event.target.id);
     },
-    [weather]
+    [mood]
   );
   // 사진 선택
   const selectImage = useCallback(
-    () => (event: any) => {
+    (event: any) => {
       setImage(event.target.id);
     },
-    [weather]
+    [image]
   );
 
   const onClickRegister = async (data: IRegData) => {
@@ -101,7 +104,8 @@ function WritePage() {
       who,
       what,
       mood,
-      image,
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/reacttoyproject-c5488.appspot.com/o/images%2Fcafe.png?alt=media&token=b2286b06-d742-4e55-88b2-b5b97bc10bcd",
       day: {
         title: data.title,
         contents: data.contents,
