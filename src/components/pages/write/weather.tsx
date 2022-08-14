@@ -32,10 +32,18 @@ export default function WeatherPick(props: IProps) {
 
       <S.BtnSection>
         <S.BeforeBtnWrapper>
-          <MoveButton onClick={props.onClickWhen} contents="이전" />
+          <MoveButton
+            type="button"
+            onClick={props.onClickWhen}
+            contents="이전"
+          />
         </S.BeforeBtnWrapper>
         <S.NextBtnWrapper>
-          <MoveButton onClick={props.onClickWhere} contents="다음" />
+          <MoveButton
+            type="button"
+            onClick={props.onClickWhere}
+            contents="다음"
+          />
         </S.NextBtnWrapper>
       </S.BtnSection>
     </S.Main>

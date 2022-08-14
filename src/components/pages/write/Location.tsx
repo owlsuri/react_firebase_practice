@@ -11,10 +11,18 @@ export default function LocationPick(props: any) {
       <MapCreate setPlace={props.setPlace} />
       <S.BtnSection>
         <S.BeforeBtnWrapper>
-          <MoveButton onClick={props.onClickWeather} contents="이전" />
+          <MoveButton
+            type="button"
+            onClick={props.onClickWeather}
+            contents="이전"
+          />
         </S.BeforeBtnWrapper>
         <S.NextBtnWrapper>
-          <MoveButton contents="다음" onClick={props.onClickRelation} />
+          <MoveButton
+            type="button"
+            contents="다음"
+            onClick={props.onClickRelation}
+          />
         </S.NextBtnWrapper>
       </S.BtnSection>
     </S.Main>
