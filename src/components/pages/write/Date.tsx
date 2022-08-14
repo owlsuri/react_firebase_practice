@@ -29,7 +29,11 @@ export default function DatePick(props: any) {
         />
       </S.DayPickerWrapper>
       <S.NextBtnWrapper>
-        <MoveButton contents="다음" onClick={props.onClickWeather} />
+        <MoveButton
+          type="button"
+          contents="다음"
+          onClick={props.onClickWeather}
+        />
       </S.NextBtnWrapper>
     </S.Main>
   );

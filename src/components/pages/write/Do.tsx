@@ -23,10 +23,18 @@ export default function DoPick(props: IProps) {
 
       <S.BtnSection>
         <S.BeforeBtnWrapper>
-          <MoveButton onClick={props.onClickRelation} contents="이전" />
+          <MoveButton
+            type="button"
+            onClick={props.onClickRelation}
+            contents="이전"
+          />
         </S.BeforeBtnWrapper>
         <S.NextBtnWrapper>
-          <MoveButton onClick={props.onClickMood} contents="다음" />
+          <MoveButton
+            type="button"
+            onClick={props.onClickMood}
+            contents="다음"
+          />
         </S.NextBtnWrapper>
       </S.BtnSection>
     </S.Main>

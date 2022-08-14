@@ -26,7 +26,11 @@ export default function DailyWrite(props: any) {
 
       <S.BtnSection>
         <S.BeforeBtnWrapper>
-          <MoveButton onClick={props.onClickPhoto} contents="이전" />
+          <MoveButton
+            type="button"
+            onClick={props.onClickPhoto}
+            contents="이전"
+          />
         </S.BeforeBtnWrapper>
         <S.NextBtnWrapper>
           <SubmitButton contents="기록" type="submit" />
