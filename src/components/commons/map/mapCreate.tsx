@@ -352,7 +352,7 @@ export default function MapCreate(props: any) {
             <div id="menu_wrap" className="bg_white">
               <div className="option">
                 <div>
-                  <form>
+                  <div>
                     <input
                       type="text"
                       value={word}
@@ -363,7 +363,7 @@ export default function MapCreate(props: any) {
                     <button id="submit_btn" type="submit">
                       <img src="/images/search.png" />
                     </button>
-                  </form>
+                  </div>
                 </div>
               </div>
               <hr />

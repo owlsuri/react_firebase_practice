@@ -16,8 +16,9 @@ const SubmitBtn = styled.button`
 
 interface IProps {
   contents: string;
+  type: "submit";
 }
 
 export default function SubmitButton(props: IProps) {
-  return <SubmitBtn>{props.contents}</SubmitBtn>;
+  return <SubmitBtn type={props.type}>{props.contents}</SubmitBtn>;
 }
