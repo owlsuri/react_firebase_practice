@@ -5,6 +5,12 @@ import MoveButton from "../../commons/buttons/routerButton";
 
 export interface IProps {
   selectFunc: (event: any) => void;
+  onClickWhere?: () => void;
+  onClickWhat?: () => void;
+  onClickMood?: () => void;
+  onClickPhoto?: () => void;
+  onClickRelation?: () => void;
+  onClickWhen?: () => void;
 }
 
 export default function WeatherPick(props: IProps) {
@@ -26,10 +32,10 @@ export default function WeatherPick(props: IProps) {
 
       <S.BtnSection>
         <S.BeforeBtnWrapper>
-          <MoveButton contents="이전" />
+          <MoveButton onClick={props.onClickWhen} contents="이전" />
         </S.BeforeBtnWrapper>
         <S.NextBtnWrapper>
-          <MoveButton contents="다음" />
+          <MoveButton onClick={props.onClickWhere} contents="다음" />
         </S.NextBtnWrapper>
       </S.BtnSection>
     </S.Main>
