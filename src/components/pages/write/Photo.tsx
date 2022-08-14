@@ -13,10 +13,10 @@ export default function PhotoPick(props: any) {
 
       <S.BtnSection>
         <S.BeforeBtnWrapper>
-          <MoveButton contents="이전" />
+          <MoveButton onClick={props.onClickMood} contents="이전" />
         </S.BeforeBtnWrapper>
         <S.NextBtnWrapper>
-          <MoveButton contents="다음" />
+          <MoveButton onClick={props.onClickContent} contents="다음" />
         </S.NextBtnWrapper>
       </S.BtnSection>
     </S.Main>

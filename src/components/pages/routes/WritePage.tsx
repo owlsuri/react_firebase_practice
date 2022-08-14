@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import DatePick from "../write/Date";
 import WeatherPick from "../write/weather";
 import LocationPick from "../write/Location";
@@ -113,16 +113,100 @@ function WritePage() {
     });
   };
 
+  // 포커스 이동
+  const whenRef = useRef<HTMLInputElement>(null);
+  const weatherRef = useRef<HTMLInputElement>(null);
+  const WhereRef = useRef<HTMLInputElement>(null);
+  const relationRef = useRef<HTMLInputElement>(null);
+  const whatRef = useRef<HTMLInputElement>(null);
+  const moodRef = useRef<HTMLInputElement>(null);
+  const photoRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLInputElement>(null);
+
+  const onClickWhen = () => {
+    whenRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const onClickWeather = () => {
+    weatherRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const onClickWhere = () => {
+    WhereRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const onClickRelation = () => {
+    relationRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const onClickWhat = () => {
+    whatRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const onClickMood = () => {
+    moodRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const onClickPhoto = () => {
+    photoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const onClickContent = () => {
+    contentRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <form onSubmit={handleSubmit(onClickRegister)}>
-      <DatePick setSelect={setSelectDay} select={selectDay} today={today} />
-      <WeatherPick selectFunc={selectWeather} />
-      <LocationPick setPlace={setPlace} />
-      <RelationPick selectFunc={selectWho} />
-      <DoPick selectFunc={selectWhat} />
-      <EmotionPick selectFunc={selectMood} />
-      <PhotoPick selectImage={selectImage} />
-      <DailyWrite onClickRegister={onClickRegister} register={register} />
+      <div ref={whenRef}>
+        <DatePick
+          setSelect={setSelectDay}
+          select={selectDay}
+          today={today}
+          onClickWeather={onClickWeather}
+        />
+      </div>
+      <div ref={weatherRef}>
+        <WeatherPick
+          selectFunc={selectWeather}
+          onClickWhere={onClickWhere}
+          onClickWhen={onClickWhen}
+        />
+      </div>
+      <div ref={WhereRef}>
+        <LocationPick
+          setPlace={setPlace}
+          onClickRelation={onClickRelation}
+          onClickWeather={onClickWeather}
+        />
+      </div>
+      <div ref={relationRef}>
+        <RelationPick
+          selectFunc={selectWho}
+          onClickWhat={onClickWhat}
+          onClickWhere={onClickWhere}
+        />
+      </div>
+      <div ref={whatRef}>
+        <DoPick
+          selectFunc={selectWhat}
+          onClickMood={onClickMood}
+          onClickRelation={onClickRelation}
+        />
+      </div>
+      <div ref={moodRef}>
+        <EmotionPick
+          selectFunc={selectMood}
+          onClickPhoto={onClickPhoto}
+          onClickWhat={onClickWhat}
+        />
+      </div>
+      <div ref={photoRef}>
+        <PhotoPick
+          selectImage={selectImage}
+          onClickContent={onClickContent}
+          onClickMood={onClickMood}
+        />
+      </div>
+      <div ref={contentRef}>
+        <DailyWrite
+          onClickRegister={onClickRegister}
+          register={register}
+          onClickPhoto={onClickPhoto}
+        />
+      </div>
     </form>
   );
 }
