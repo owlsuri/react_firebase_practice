@@ -17,7 +17,7 @@ const RouterBtn = styled.button`
 interface IProps {
   contents: string;
   onClick?: () => void;
-  type?: any;
+  type?: "button";
 }
 
 export default function MoveButton(props: IProps) {
