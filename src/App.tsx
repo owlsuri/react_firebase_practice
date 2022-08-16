@@ -19,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   font-size: 20px;
-  font-family: "gothicssi";
-  letter-spacing: 2px;  
+  font-family: "kopubDotum";
+  /* letter-spacing: 2px;   */
   }
   
   body {
@@ -28,8 +28,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: "gothicssi";
-    src: url("/font/HGGGothicssi_60g.ttf");
+    font-family: "kopubDotum";
+    src: url("/font/KoPubWorld Dotum Medium.ttf");
   }
 `;
 
@@ -44,7 +44,7 @@ function App() {
             <Route path="/test" element={<FireBaseExample />} />
             <Route path="/write" element={<WritePage />} />
             <Route path="/detail/:id" element={<DetailPage />} />
-            <Route path="/list/:id" element={<ListPage />} />
+            <Route path="/list" element={<ListPage />} />
             <Route path="/myPage/:id" element={<MyPage />} />
             <Route path="/signIn" element={<SignInPage />} />
             <Route path="/signUp" element={<SignUpPage />} />

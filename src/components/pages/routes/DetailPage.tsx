@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import MoveButton from "../../commons/buttons/routerButton";
 import * as S from "../styles/detail/detailStyles";
 function DetailPage() {
+  const navigate = useNavigate();
   return (
     <S.Main>
-      <S.Title>민영님의 오늘</S.Title>
+      <S.Title>민영님의 하루</S.Title>
       <S.Wrapper>
         <S.Img
           style={{
@@ -36,7 +38,12 @@ function DetailPage() {
       </S.Wrapper>
       <S.ButtonWrapper>
         <S.ListDeleteBtnWrapper>
-          <MoveButton contents="목록" />
+          <MoveButton
+            onClick={() => {
+              navigate("/list");
+            }}
+            contents="목록"
+          />
         </S.ListDeleteBtnWrapper>
         <S.EditBtnWrapper>
           <MoveButton contents="수정" />
