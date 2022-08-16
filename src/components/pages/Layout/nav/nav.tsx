@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colorPick } from "../../../commons/color/colorPick";
@@ -58,7 +57,7 @@ const MoveToWriteWrapper = styled(Link)`
 
 export default function NavPage() {
   const reducer = useAppSelector((state) => state);
-  console.log(reducer.userReducer);
+
   useGetUser();
   return (
     <Nav>
