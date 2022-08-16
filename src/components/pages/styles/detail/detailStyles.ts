@@ -12,9 +12,9 @@ export const Main = styled.div`
 export const Title = styled.h1`
   display: flex;
   justify-content: center;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
-  padding-bottom: 86px;
+  padding-bottom: 20px;
 `;
 
 export const Wrapper = styled.div`
@@ -51,7 +51,7 @@ export const DailyDate = styled.div`
   font-size: 16px;
   font-weight: 600;
   color: ${colorPick.lightGray};
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 `;
 
 export const DailySelectedImg = styled.img`

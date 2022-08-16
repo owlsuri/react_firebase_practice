@@ -13,7 +13,7 @@ export const Main = styled.div`
 export const SelectedImg = styled.img`
   width: 62px;
   height: 62px;
-  filter: opacity(0.5) drop-shadow(0 0 0 white);
+  filter: brightness(3) drop-shadow(1px 2px 3px #000);
 `;
 export const SelectedMidImg = styled(SelectedImg)`
   margin: 0px 39px;
