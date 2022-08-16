@@ -7,10 +7,18 @@ interface ILayoutProps {
 const Wrapper = styled.div``;
 
 const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: ${colorPick.lightPurple};
   width: 100%;
   height: 100%;
   min-height: 100vh;
+
+  header {
+    display: flex;
+    width: 100vw;
+  }
 `;
 
 export default function Layout(props: ILayoutProps) {

@@ -7,7 +7,7 @@ interface IProps {
   isMenuOpen: boolean;
 }
 
-const Header = styled.div`
+const Header = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -23,14 +23,15 @@ const HamburgerBtn = styled.div`
   width: 35px;
   height: 35px;
   cursor: pointer;
+  position: relative;
 `;
 
 const Menu = styled.div`
   display: ${(props: IProps) => (props.isMenuOpen ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
-  top: 12%;
-  right: 14%;
+  top: 200%;
+  right: 0%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -84,12 +85,13 @@ export default function HeaderPage() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
-      ></HamburgerBtn>
-      <Menu isMenuOpen={isMenuOpen}>
-        <DropDownMenuFirst>LIST</DropDownMenuFirst>
-        <DropDownMenuMid>MYPAGE</DropDownMenuMid>
-        <DropDownMenuLast>LOGOUT</DropDownMenuLast>
-      </Menu>
+      >
+        <Menu isMenuOpen={isMenuOpen}>
+          <DropDownMenuFirst>LIST</DropDownMenuFirst>
+          <DropDownMenuMid>MYPAGE</DropDownMenuMid>
+          <DropDownMenuLast>LOGOUT</DropDownMenuLast>
+        </Menu>
+      </HamburgerBtn>
     </Header>
   );
 }
