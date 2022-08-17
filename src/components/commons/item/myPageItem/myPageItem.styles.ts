@@ -10,6 +10,7 @@ export const Main = styled.div`
   background-color: white;
   padding: 24px 50px;
   width: 850px;
+  margin-bottom: 65px;
 `;
 
 export const MainWrapper = styled.div`

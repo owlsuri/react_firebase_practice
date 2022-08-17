@@ -8,7 +8,7 @@ export const Main = styled.div`
   height: 229px;
   background-color: white;
   border-radius: 10px;
-  margin: 65px 0px;
+  margin-bottom: 47px;
 `;
 
 export const SelectedImg = styled.img`
