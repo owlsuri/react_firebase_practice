@@ -13,6 +13,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   name: yup
@@ -34,6 +35,8 @@ const schema = yup.object({
 });
 
 function SignUpPage() {
+  const navigate = useNavigate();
+
   const auth = getAuth(firebaseApp);
 
   const { register, handleSubmit, formState } = useForm({
@@ -92,7 +95,13 @@ function SignUpPage() {
         </S.InputWrapper>
         <S.SignInWrapper>
           <S.SignInInfo>이미 회원이신가요?</S.SignInInfo>
-          <S.SignInLink>로그인하러가기</S.SignInLink>
+          <S.SignInLink
+            onClick={() => {
+              navigate("/signIn");
+            }}
+          >
+            로그인하러가기
+          </S.SignInLink>
         </S.SignInWrapper>
         <S.SignUpBtnWrapper>
           <SignButton contents="회원가입" />

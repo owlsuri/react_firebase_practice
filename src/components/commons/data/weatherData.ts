@@ -1,5 +1,5 @@
 export const weatherImg = [
-  { key: "0", value: "맑음", img: "/weather/cloud.png", checked: false },
+  { key: "0", value: "맑음", img: "/weather/sunny.png", checked: false },
   { key: "1", value: "조금흐림", img: "/weather/sunCloud.png", checked: false },
   { key: "2", value: "흐림", img: "/weather/cloud.png", checked: false },
   { key: "3", value: "비", img: "/weather/rain.png", checked: false },

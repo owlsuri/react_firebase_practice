@@ -12,6 +12,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
   loginEmail: yup
@@ -28,6 +29,8 @@ const schema = yup.object({
 });
 
 function SignInPage() {
+  const navigate = useNavigate();
+
   const auth = getAuth(firebaseApp);
 
   const [user, setUser] = useState({});
@@ -50,6 +53,7 @@ function SignInPage() {
         data.loginEmail,
         data.loginPassword
       );
+      navigate("/mypage/123");
     } catch (error: any) {
       console.log(error.message);
     }
@@ -77,7 +81,13 @@ function SignInPage() {
         </S.InputWrapper>
         <S.SignInWrapper>
           <S.SignInInfo>아직 회원이 아니신가요?</S.SignInInfo>
-          <S.SignInLink>회원가입하러가기</S.SignInLink>
+          <S.SignInLink
+            onClick={() => {
+              navigate("/signUp");
+            }}
+          >
+            회원가입하러가기
+          </S.SignInLink>
         </S.SignInWrapper>
         <S.SignUpBtnWrapper>
           <SignButton contents="로그인" />
