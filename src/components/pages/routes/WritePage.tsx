@@ -111,6 +111,7 @@ function WritePage() {
         contents: data.contents,
       },
     });
+    alert("오늘의 삼다일기 작성이 완료되었습니다!");
     console.log("👩🏻", res);
   };
 

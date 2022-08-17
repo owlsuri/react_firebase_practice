@@ -39,8 +39,6 @@ function DetailPage() {
     });
   }, []);
 
-  console.log(data);
-
   return (
     <S.Main>
       <S.Title>민영님의 하루</S.Title>
@@ -54,22 +52,17 @@ function DetailPage() {
           }}
         ></S.Img>
         <S.DailyWrapper>
-          <S.DailyTitle>오늘은 용산에서 데이트</S.DailyTitle>
-          <S.DailyDate>MON JUL 18 / 2022</S.DailyDate>
+          <S.DailyTitle>{data[0]?.day.title}</S.DailyTitle>
+          <S.DailyDate>{data[0]?.timestamp}</S.DailyDate>
           <div>
             <S.DailySelectedImg src="/weather/cloud.png" />
             <S.DailySelectedMiddleImg src="/weather/cloud.png" />
             <S.DailySelectedImg src="/weather/cloud.png" />
           </div>
-          <S.DailyWrite>
-            전에 갔던 리틀갱스터 버섯밥뭐시기가 너무 맛있어서 또 가자고했다.
-            비고미 쿠키도 먹고!! 비고미 베이커리 쪽 시장에 엄청난 순대 맛집을
-            발견했다...!! 좋은사람과 맛있는 음식, 역시 최고다!! 그래도 코딩은
-            해야지...
-          </S.DailyWrite>
+          <S.DailyWrite>{data[0]?.day.contents}</S.DailyWrite>
           <S.LocationWrapper>
             <S.LocationPin src="/images/pin.png" />
-            <S.Location>서울특별시 용산구 한남동 용문시장 순대집</S.Location>
+            <S.Location>{data[0]?.location.placeName}</S.Location>
           </S.LocationWrapper>
         </S.DailyWrapper>
       </S.Wrapper>
