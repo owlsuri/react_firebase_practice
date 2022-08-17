@@ -92,7 +92,7 @@ function WritePage() {
   );
 
   const onClickRegister = async (data: IRegData) => {
-    await addDoc(board, {
+    const res = await addDoc(board, {
       timestamp: datePick,
       weather,
       location: {
@@ -111,6 +111,7 @@ function WritePage() {
         contents: data.contents,
       },
     });
+    console.log("👩🏻", res);
   };
 
   // 포커스 이동

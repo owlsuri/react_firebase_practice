@@ -1,9 +1,46 @@
-import React from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {
+  collection,
+  DocumentData,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import firebaseApp from "../../../Firebase";
 import MoveButton from "../../commons/buttons/routerButton";
 import * as S from "../styles/detail/detailStyles";
+
 function DetailPage() {
   const navigate = useNavigate();
+  const userAuth = getAuth();
+  const [data, setData] = useState<DocumentData>([]);
+
+  useEffect(() => {
+    onAuthStateChanged(userAuth, (profile) => {
+      if (profile) {
+        const diary = collection(
+          getFirestore(firebaseApp),
+          `${userAuth.currentUser?.uid}`
+        );
+        const fetchDiary = async () => {
+          const result = await getDocs(
+            query(diary, where("timestamp", "==", "20220815"))
+          );
+          const detail = result.docs.map((el) => el.data());
+          setData(detail);
+        };
+        fetchDiary();
+      } else {
+        alert("로그인을 먼저 해주세요.");
+      }
+    });
+  }, []);
+
+  console.log(data);
+
   return (
     <S.Main>
       <S.Title>민영님의 하루</S.Title>
@@ -40,7 +77,7 @@ function DetailPage() {
         <S.ListDeleteBtnWrapper>
           <MoveButton
             onClick={() => {
-              navigate("/list");
+              navigate("/mypage");
             }}
             contents="목록"
           />
