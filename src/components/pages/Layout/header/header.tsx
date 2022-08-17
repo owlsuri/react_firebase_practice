@@ -87,7 +87,7 @@ export default function HeaderPage() {
         }}
       >
         <Menu isMenuOpen={isMenuOpen}>
-          <DropDownMenuFirst>LIST</DropDownMenuFirst>
+          <DropDownMenuFirst>WRITE</DropDownMenuFirst>
           <DropDownMenuMid>MYPAGE</DropDownMenuMid>
           <DropDownMenuLast>LOGOUT</DropDownMenuLast>
         </Menu>

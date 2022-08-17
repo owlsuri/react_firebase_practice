@@ -1,7 +1,8 @@
 import React from "react";
 import * as S from "./Listitem.styles";
 
-export default function ListItem() {
+export default function ListItem(props: any) {
+  console.log(props);
   return (
     <S.Main>
       <S.DateSection>
